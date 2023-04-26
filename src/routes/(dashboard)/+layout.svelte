@@ -5,9 +5,13 @@
 	// Imports
 	import { AppShell } from '@skeletonlabs/skeleton';
 	import AppRail from '$lib/Components/AppRail.svelte';
+	import NavBar from '$lib/Components/NavBar.svelte';
 </script>
 
 <AppShell>
+	<svelte:fragment slot="header">
+		<NavBar />
+	</svelte:fragment>
 	<svelte:fragment slot="sidebarLeft">
 		<AppRail />
 	</svelte:fragment>

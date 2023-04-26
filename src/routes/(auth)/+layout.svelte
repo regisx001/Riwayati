@@ -11,6 +11,5 @@
 	<!-- <svelte:fragment slot="header">
 		<NavBar />
 	</svelte:fragment> -->
-
 	<slot />
 </AppShell>
