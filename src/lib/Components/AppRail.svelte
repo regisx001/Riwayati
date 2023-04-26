@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { Selectedpage } from '$lib/Utils/stores';
 	import { AppRail, AppRailTile } from '@skeletonlabs/skeleton';
-	import { writable, type Writable } from 'svelte/store';
-	const Selectedpage: Writable<number> = writable(0);
 </script>
 
 <AppRail selected={Selectedpage}>
