@@ -17,7 +17,7 @@
 	</div>
 	<div class="max-w-xl w-full card card-hover  shadow-2xl md:w-4/6">
 		<h2 class="text-center font-bold p-10">Login To Your Account</h2>
-		<form class="flex-col p-8 flex gap-3" method="post" action="?/register" use:enhance>
+		<form class="flex-col p-8 flex gap-3" method="post" action="?/login" use:enhance>
 			<input
 				placeholder="Eg: example@gmail.com"
 				type="email"
@@ -33,7 +33,7 @@
 					name="password"
 				/>
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
-				<div on:click={showPass} class="btn cursor-pointer py-2 px-4 absolute top-0 right-0">
+				<div on:click={showPass} class="btn cursor-pointer py-4 px-4 absolute top-0 right-0">
 					{#if showPassword}
 						<i class="ti ti-eye-off text-xl" />
 					{:else}
