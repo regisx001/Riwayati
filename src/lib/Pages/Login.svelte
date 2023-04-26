@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { images } from '$lib/Utils/utils';
-	$: image = images[0];
+	$: image = images[1];
 	let showPassword = false;
 	function showPass() {
 		showPassword = !showPassword;
@@ -15,13 +15,13 @@
 		<img class="hidden md:flex rounded-lg" src={image} alt="" />
 		<h3 class="text-center w-full p-2 font-bold">Become A Writer</h3>
 	</div>
-	<div class="max-w-xl w-full card card-hover shadow-2xl md:w-4/6">
-		<h2 class="text-center font-bold pt-8 p-6">Register New Account</h2>
+	<div class="max-w-xl w-full card card-hover  shadow-2xl md:w-4/6">
+		<h2 class="text-center font-bold p-10">Login To Your Account</h2>
 		<form class="flex-col p-8 flex gap-3" method="post" action="?/register" use:enhance>
 			<input
 				placeholder="Eg: example@gmail.com"
 				type="email"
-				class="input rounded-md"
+				class="input rounded-md my-2"
 				name="email"
 			/>
 
@@ -29,7 +29,7 @@
 				<input
 					placeholder="Password"
 					type={!showPassword ? 'password' : 'text'}
-					class="input rounded-md"
+					class="input rounded-md my-2"
 					name="password"
 				/>
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -42,22 +42,6 @@
 				</div>
 			</div>
 
-			<div class="relative">
-				<input
-					placeholder="Password Confirm"
-					type={!showPassword ? 'password' : 'text'}
-					class="input rounded-md"
-					name="passwordConfirm"
-				/>
-				<!-- svelte-ignore a11y-click-events-have-key-events -->
-				<div on:click={showPass} class="btn cursor-pointer py-2 px-4 absolute top-0 right-0">
-					{#if showPassword}
-						<i class="ti ti-eye-off text-xl" />
-					{:else}
-						<i class="ti ti-eye text-xl" />
-					{/if}
-				</div>
-			</div>
 			<div class="px-2">
 				<a href="/forgot">forgot password ?</a>
 			</div>
@@ -65,7 +49,7 @@
 			<button class="btn my-1 variant-glass-secondary w-full rounded-lg">Register</button>
 
 			<div class="w-full flex justify-center">
-				<a href="/forgot">Already have An Acount !</a>
+				<a href="/forgot">Don't have An Acount !</a>
 			</div>
 		</form>
 	</div>
