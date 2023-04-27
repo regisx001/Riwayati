@@ -12,5 +12,8 @@ export let images: string[] = [
 ]
 
 export function getAvatarUrl(user: any) {
+    if (!user) {
+        return false
+    }
     return `${defaultUrl}/api/files/${user.collectionId}/${user.id}/${user.avatar}`
 }

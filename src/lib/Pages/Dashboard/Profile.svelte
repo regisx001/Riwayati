@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import { getAvatarUrl } from '$lib/Utils/utils';
 	import { Avatar } from '@skeletonlabs/skeleton';
+	import { enhance } from '$app/forms';
 	export let user: any;
 	// Avatar Things
 	$: isAvatarHovered = false;
@@ -12,6 +12,7 @@
 		const newAvatar = e.target.files[0];
 		avatar = URL.createObjectURL(newAvatar);
 	}
+	// End Avatar Things
 </script>
 
 <svelte:head>
@@ -36,6 +37,7 @@
 					name="avatar"
 					class="hidden"
 				/>
+
 				<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 				<div
 					class="relative"
@@ -65,48 +67,49 @@
 					</div>
 				</div>
 			</header>
-			<section class="w-full flex flex-row">
-				<div class="flex flex-col w-1/2 p-4 gap-2">
-					<label class="font-bold px-2" for=""> Username : </label>
-					<input
-						value={user.username}
-						placeholder="Username"
-						class="input rounded-md"
-						type="text"
-						name="username"
-					/>
-
-					<label class="font-bold px-2" for=""> Name : </label>
-					<input
-						value={user.name}
-						placeholder="Full Name"
-						class="input rounded-md"
-						type="text"
-						name="name"
-					/>
-				</div>
-				<div class="flex flex-col w-1/2 p-4 gap-2">
-					<label class="font-bold px-2" for=""> Email : </label>
-					<input
-						disabled
-						placeholder="Email"
-						value={user.email}
-						class="input rounded-md"
-						type="text"
-						name="email"
-					/>
-
-					<div class="w-full h-full py-10 flex flex-row gap-4 justify-center items-center">
-						<label for=""> Email Visibility : </label>
+			<section class="w-full flex flex-col">
+				<div class="w-full flex flex-row">
+					<div class="flex flex-col w-1/2 px-4 gap-2">
+						<label class="font-bold px-2" for=""> Username : </label>
 						<input
-							disabled
-							value={user.emailVisibility}
-							type="checkbox"
-							class="checkbox"
-							name="emailVisibility"
-							id=""
+							value={user?.username || ''}
+							placeholder="Username"
+							class="input rounded-md"
+							type="text"
+							name="username"
+						/>
+
+						<label class="font-bold px-2" for=""> Name : </label>
+						<input
+							value={user?.name || ''}
+							placeholder="Full Name"
+							class="input rounded-md"
+							type="text"
+							name="name"
 						/>
 					</div>
+					<div class="flex flex-col w-1/2 px-4 gap-2">
+						<label class="font-bold px-2" for=""> Email : </label>
+						<input
+							disabled
+							placeholder="Email"
+							value={user?.email || ''}
+							class="input rounded-md"
+							type="text"
+							name="email"
+						/>
+					</div>
+				</div>
+				<div class="p-4">
+					<label class="font-bold px-2 pb-2" for="">Description : </label>
+					<textarea
+						value={user.description}
+						class="input"
+						placeholder="Bio Here"
+						name="description"
+						cols="30"
+						rows="5"
+					/>
 				</div>
 			</section>
 			<footer class="card-footer flex w-full justify-center items-center">

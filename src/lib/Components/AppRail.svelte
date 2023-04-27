@@ -2,10 +2,27 @@
 	import { enhance } from '$app/forms';
 	import { Selectedpage } from '$lib/Utils/stores';
 	import { AppRail, AppRailTile } from '@skeletonlabs/skeleton';
+	export let pathname: any;
 </script>
 
 <AppRail selected={Selectedpage}>
-	<AppRailTile label="Profile" value={0}>
+	<AppRailTile
+		class={'/dashboard' === pathname ? '!bg-primary-500' : ''}
+		tag="a"
+		href={'/dashboard'}
+		label="Dashboard"
+		value={4}
+	>
+		<i class="ti ti-user-circle text-3xl" />
+	</AppRailTile>
+
+	<AppRailTile
+		class="{'/dashboard/profile' === pathname ? '!bg-primary-500' : ''}s"
+		tag="a"
+		href={'/dashboard/profile'}
+		label="Profile"
+		value={0}
+	>
 		<i class="ti ti-user-circle text-3xl" />
 	</AppRailTile>
 

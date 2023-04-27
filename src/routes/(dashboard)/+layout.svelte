@@ -1,4 +1,5 @@
 <script>
+	import { page } from '$app/stores';
 	import '@skeletonlabs/skeleton/themes/theme-crimson.css';
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../../app.postcss';
@@ -13,7 +14,7 @@
 		<NavBar />
 	</svelte:fragment>
 	<svelte:fragment slot="sidebarLeft">
-		<AppRail />
+		<AppRail pathname={$page.data.pathname} />
 	</svelte:fragment>
 	<!-- Router Slot -->
 	<slot />
