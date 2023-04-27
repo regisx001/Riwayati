@@ -19,9 +19,13 @@
 	<title>Profile</title>
 </svelte:head>
 
-<section class="flex w-full h-full justify-center items-center">
+<section class="flex w-full h-full relative justify-center items-center">
+	<div
+		style="background-image: url({'/default_cover.jpg'});"
+		class="absolute top-0 right-0 z-0 w-full bg-center bg-no-repeat bg-cover blur-lg bg-white h-56 lg:h-72 xl:h-96"
+	/>
 	<form
-		class="max-w-5xl w-full"
+		class="max-w-5xl relative z-20 w-full"
 		enctype="multipart/form-data"
 		action="?/updateProfile"
 		method="post"

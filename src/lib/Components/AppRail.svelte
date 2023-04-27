@@ -26,7 +26,7 @@
 		<i class="ti ti-user-circle text-3xl" />
 	</AppRailTile>
 
-	<AppRailTile label="New Novel" value={2}>
+	<!-- <AppRailTile label="New Novel" value={2}>
 		<i class="ti ti-book-2 text-3xl" />
 	</AppRailTile>
 
@@ -36,7 +36,8 @@
 
 	<AppRailTile label="My Novels" value={4}>
 		<i class="ti ti-book text-3xl" />
-	</AppRailTile>
+	</AppRailTile> -->
+
 	<svelte:fragment slot="trail">
 		<form action="/logout" method="post" use:enhance>
 			<AppRailTile label="Logout">
