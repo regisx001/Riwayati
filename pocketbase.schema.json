@@ -100,7 +100,7 @@
 			},
 			{
 				"id": "if60bqta",
-				"name": "cover_image",
+				"name": "cover",
 				"type": "file",
 				"system": false,
 				"required": false,
