@@ -1,60 +1,5 @@
 [
 	{
-		"id": "z5lnjvb4uo1u7st",
-		"name": "novel",
-		"type": "base",
-		"system": false,
-		"schema": [
-			{
-				"id": "9zoeixg7",
-				"name": "title",
-				"type": "text",
-				"system": false,
-				"required": false,
-				"options": {
-					"min": null,
-					"max": null,
-					"pattern": ""
-				}
-			},
-			{
-				"id": "e6gap0wl",
-				"name": "poster",
-				"type": "file",
-				"system": false,
-				"required": false,
-				"options": {
-					"maxSelect": 1,
-					"maxSize": 15242880,
-					"mimeTypes": ["image/jpeg", "image/png", "image/svg+xml", "image/gif", "image/webp"],
-					"thumbs": [],
-					"protected": false
-				}
-			},
-			{
-				"id": "a4qramdm",
-				"name": "creatot",
-				"type": "relation",
-				"system": false,
-				"required": false,
-				"options": {
-					"collectionId": "_pb_users_auth_",
-					"cascadeDelete": true,
-					"minSelect": null,
-					"maxSelect": 1,
-					"displayFields": []
-				}
-			}
-		],
-		"indexes": [],
-		"listRule": null,
-		"viewRule": null,
-		"createRule": null,
-		"updateRule": null,
-		"deleteRule": null,
-		"options": {}
-	},
-	{
 		"id": "_pb_users_auth_",
 		"name": "users",
 		"type": "auth",
@@ -129,5 +74,164 @@
 			"onlyEmailDomains": null,
 			"requireEmail": false
 		}
+	},
+	{
+		"id": "7af0s0z7d7wru85",
+		"name": "chapters",
+		"type": "base",
+		"system": false,
+		"schema": [
+			{
+				"id": "rwaedlbg",
+				"name": "title",
+				"type": "text",
+				"system": false,
+				"required": true,
+				"options": {
+					"min": null,
+					"max": null,
+					"pattern": ""
+				}
+			},
+			{
+				"id": "lajpksil",
+				"name": "number",
+				"type": "number",
+				"system": false,
+				"required": false,
+				"options": {
+					"min": null,
+					"max": null
+				}
+			},
+			{
+				"id": "mlmkr8lm",
+				"name": "body",
+				"type": "editor",
+				"system": false,
+				"required": false,
+				"options": {}
+			},
+			{
+				"id": "ueox5zp9",
+				"name": "novel",
+				"type": "relation",
+				"system": false,
+				"required": false,
+				"options": {
+					"collectionId": "z5lnjvb4uo1u7st",
+					"cascadeDelete": false,
+					"minSelect": null,
+					"maxSelect": null,
+					"displayFields": []
+				}
+			}
+		],
+		"indexes": [],
+		"listRule": null,
+		"viewRule": null,
+		"createRule": null,
+		"updateRule": null,
+		"deleteRule": null,
+		"options": {}
+	},
+	{
+		"id": "z5lnjvb4uo1u7st",
+		"name": "novels",
+		"type": "base",
+		"system": false,
+		"schema": [
+			{
+				"id": "9zoeixg7",
+				"name": "title",
+				"type": "text",
+				"system": false,
+				"required": false,
+				"options": {
+					"min": null,
+					"max": null,
+					"pattern": ""
+				}
+			},
+			{
+				"id": "e6gap0wl",
+				"name": "image",
+				"type": "file",
+				"system": false,
+				"required": false,
+				"options": {
+					"maxSelect": 1,
+					"maxSize": 15242880,
+					"mimeTypes": ["image/jpeg", "image/png", "image/svg+xml", "image/gif", "image/webp"],
+					"thumbs": [],
+					"protected": false
+				}
+			},
+			{
+				"id": "a4qramdm",
+				"name": "creator",
+				"type": "relation",
+				"system": false,
+				"required": false,
+				"options": {
+					"collectionId": "_pb_users_auth_",
+					"cascadeDelete": true,
+					"minSelect": null,
+					"maxSelect": 1,
+					"displayFields": []
+				}
+			},
+			{
+				"id": "rul3ag24",
+				"name": "draft",
+				"type": "bool",
+				"system": false,
+				"required": false,
+				"options": {}
+			},
+			{
+				"id": "r58jamnh",
+				"name": "description",
+				"type": "text",
+				"system": false,
+				"required": false,
+				"options": {
+					"min": null,
+					"max": null,
+					"pattern": ""
+				}
+			},
+			{
+				"id": "soj7s5tp",
+				"name": "tags",
+				"type": "select",
+				"system": false,
+				"required": false,
+				"options": {
+					"maxSelect": 10,
+					"values": [
+						"anime",
+						"comics",
+						"manga",
+						"japan",
+						"america",
+						"light novel",
+						"animanga",
+						"majic",
+						"adventure",
+						"action",
+						"genius",
+						"others"
+					]
+				}
+			}
+		],
+		"indexes": [],
+		"listRule": null,
+		"viewRule": null,
+		"createRule": null,
+		"updateRule": null,
+		"deleteRule": null,
+		"options": {}
 	}
 ]
