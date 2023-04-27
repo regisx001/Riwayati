@@ -1,4 +1,4 @@
-import { fail, redirect } from "@sveltejs/kit";
+import { redirect } from "@sveltejs/kit";
 import type { Actions, PageServerLoad } from "./$types";
 
 
@@ -23,12 +23,12 @@ export const actions: Actions = {
             data.delete("cover")
         }
 
-        console.log(data)
-
         try {
             await locals.pb.collection('users').update(locals?.user?.id, data);
         } catch (error) {
             console.log("Error" + error)
         }
+
+        throw redirect(300, "/dashboard/profile")
     }
 };
