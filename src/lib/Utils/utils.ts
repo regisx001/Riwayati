@@ -15,5 +15,18 @@ export function getAvatarUrl(user: any) {
     if (!user) {
         return false
     }
+    if (!user.avatar) {
+        return false
+    }
     return `${defaultUrl}/api/files/${user.collectionId}/${user.id}/${user.avatar}`
+}
+
+export function getCoverUrl(user: any) {
+    if (!user) {
+        return false
+    }
+    if (!user.cover) {
+        return false
+    }
+    return `${defaultUrl}/api/files/${user.collectionId}/${user.id}/${user.cover}`
 }

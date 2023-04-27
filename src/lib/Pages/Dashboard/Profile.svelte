@@ -1,8 +1,19 @@
 <script lang="ts">
-	import { getAvatarUrl } from '$lib/Utils/utils';
+	import { getAvatarUrl, getCoverUrl } from '$lib/Utils/utils';
 	import { Avatar } from '@skeletonlabs/skeleton';
 	import { enhance } from '$app/forms';
 	export let user: any;
+	// Cover Image Things
+	$: isCoverHovered = false;
+	let cover = getCoverUrl(user) || '/default_cover.jpg';
+	let coverInput: HTMLElement;
+	function loadCover(e: Event) {
+		// @ts-ignore
+		const newCover = e.target.files[0];
+		cover = URL.createObjectURL(newCover);
+	}
+	// End Cover Image Things
+
 	// Avatar Things
 	$: isAvatarHovered = false;
 	let avatarInput: HTMLElement;
@@ -20,9 +31,20 @@
 </svelte:head>
 
 <section class="flex w-full h-full relative justify-center items-center">
+	<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<div
-		style="background-image: url({'/default_cover.jpg'});"
-		class="absolute top-0 right-0 z-0 w-full bg-center bg-no-repeat bg-cover blur-lg bg-white h-56 lg:h-72 xl:h-96"
+		on:mouseover={() => {
+			isCoverHovered = true;
+		}}
+		on:mouseout={() => {
+			isCoverHovered = false;
+		}}
+		on:click={() => {
+			coverInput.click();
+		}}
+		style="background-image: url({cover});"
+		class="absolute cursor-pointer top-0 right-0 z-0 w-full bg-center bg-no-repeat bg-cover blur-md h-56 lg:h-72 xl:h-96"
 	/>
 	<form
 		class="max-w-5xl relative z-20 w-full"
@@ -39,6 +61,13 @@
 					bind:this={avatarInput}
 					type="file"
 					name="avatar"
+					class="hidden"
+				/>
+				<input
+					on:change={loadCover}
+					bind:this={coverInput}
+					type="file"
+					name="cover"
 					class="hidden"
 				/>
 

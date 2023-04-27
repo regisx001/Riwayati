@@ -18,6 +18,11 @@ export const actions: Actions = {
             data.delete("avatar")
         }
 
+        // @ts-ignore
+        if (data.get("cover").size === 0) {
+            data.delete("cover")
+        }
+
         console.log(data)
 
         try {
