@@ -26,11 +26,17 @@
 		<i class="ti ti-user-circle text-3xl" />
 	</AppRailTile>
 
-	<!-- <AppRailTile label="New Novel" value={2}>
+	<AppRailTile
+		class={'/dashboard/new-novel' === pathname ? '!bg-primary-500' : ''}
+		tag="a"
+		href={'/dashboard/new-novel'}
+		label="New Novel"
+		value={2}
+	>
 		<i class="ti ti-book-2 text-3xl" />
 	</AppRailTile>
 
-	<AppRailTile label="Draft" value={3}>
+	<!-- <AppRailTile label="Draft" value={3}>
 		<i class="ti ti-git-pull-request-draft text-3xl" />
 	</AppRailTile>
 
