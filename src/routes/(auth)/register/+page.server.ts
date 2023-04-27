@@ -1,5 +1,6 @@
 import { fail, redirect } from "@sveltejs/kit";
 import type { Actions, PageServerLoad } from "./$types";
+import { registerSchema } from "$lib/Utils/schemas";
 
 export const load: PageServerLoad = async () => {
 }
@@ -11,32 +12,27 @@ export const load: PageServerLoad = async () => {
 
 export const actions: Actions = {
     register: async ({ request, locals }) => {
-        const body = Object.fromEntries(await request.formData())
-        if (!body?.email) {
+        const data = Object.fromEntries(await request.formData())
+
+        const form = registerSchema.safeParse(data)
+
+        if (form.success === false) {
             return fail(400, {
-                email: "required"
+                form: form.error.flatten().fieldErrors
             })
         }
 
-        if (!body?.password) {
+        if (data?.password !== data?.passwordConfirm) {
             return fail(400, {
-                password: "required"
+                passwordConfirm: "Password not match"
             })
         }
 
-        if (body?.password !== body?.passwordConfirm) {
-            return fail(400, {
-                passwordConfirm: "not match"
-            })
-        }
-        console.log(body)
         try {
             // @ts-ignore
-            await locals.pb.collection('users').create(body)
+            await locals.pb.collection('users').create(data)
             // @ts-ignore
-            await locals.pb.collection("users").requestVerification(body.email)
-            // @ts-ignore
-            await locals.pb.collection("users").requestVerification(body?.email)
+            await locals.pb.collection("users").requestVerification(data.email)
         } catch (err) {
             console.log('Error: ', err);
         }

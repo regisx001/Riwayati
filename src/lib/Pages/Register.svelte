@@ -1,11 +1,39 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
+	import { enhance, type SubmitFunction } from '$app/forms';
+	import { toastStore, type ToastSettings } from '@skeletonlabs/skeleton';
 	import { images } from '$lib/Utils/utils';
 	$: image = images[0];
 	let showPassword = false;
 	function showPass() {
 		showPassword = !showPassword;
 	}
+	// Enhancement
+	function triggerToast(message: string, background = 'variant-filled-secondary') {
+		const t: ToastSettings = {
+			message,
+			background
+		};
+		toastStore.trigger(t);
+	}
+	const enhancement: SubmitFunction = async ({ data }) => {
+		return async ({ update, result }) => {
+			// @ts-ignore
+			const data = result?.data;
+			if (data?.form?.email) {
+				triggerToast(data?.form?.email.pop());
+			}
+			if (data?.form?.password) {
+				triggerToast(data?.form?.password.pop());
+			}
+			if (data?.form?.passwordConfirm) {
+				triggerToast(data?.form?.passwordConfirm.pop());
+			}
+			if (data?.passwordConfirm) {
+				triggerToast(data?.passwordConfirm, 'variant-filled-primary');
+			}
+			await update();
+		};
+	};
 </script>
 
 <section
@@ -17,10 +45,15 @@
 	</div>
 	<div class="max-w-xl w-full card card-hover shadow-2xl md:w-4/6">
 		<h2 class="text-center font-bold pt-8 p-6">Register New Account</h2>
-		<form class="flex-col p-8 flex gap-3" method="post" action="?/register" use:enhance>
+		<form
+			class="flex-col p-8 flex gap-3"
+			method="post"
+			action="?/register"
+			use:enhance={enhancement}
+		>
 			<input
 				placeholder="Eg: example@gmail.com"
-				type="email"
+				type="text"
 				class="input rounded-md"
 				name="email"
 			/>

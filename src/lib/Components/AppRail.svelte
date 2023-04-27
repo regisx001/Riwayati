@@ -11,30 +11,30 @@
 		tag="a"
 		href={'/dashboard'}
 		label="Dashboard"
-		value={4}
-	>
-		<i class="ti ti-user-circle text-3xl" />
-	</AppRailTile>
-
-	<AppRailTile
-		class="{'/dashboard/profile' === pathname ? '!bg-primary-500' : ''}s"
-		tag="a"
-		href={'/dashboard/profile'}
-		label="Profile"
 		value={0}
 	>
 		<i class="ti ti-user-circle text-3xl" />
 	</AppRailTile>
 
-	<AppRailTile label="New Novel" value={1}>
+	<AppRailTile
+		class={'/dashboard/profile' === pathname ? '!bg-primary-500' : ''}
+		tag="a"
+		href={'/dashboard/profile'}
+		label="Profile"
+		value={1}
+	>
+		<i class="ti ti-user-circle text-3xl" />
+	</AppRailTile>
+
+	<AppRailTile label="New Novel" value={2}>
 		<i class="ti ti-book-2 text-3xl" />
 	</AppRailTile>
 
-	<AppRailTile label="Draft" value={2}>
+	<AppRailTile label="Draft" value={3}>
 		<i class="ti ti-git-pull-request-draft text-3xl" />
 	</AppRailTile>
 
-	<AppRailTile label="My Novels" value={3}>
+	<AppRailTile label="My Novels" value={4}>
 		<i class="ti ti-book text-3xl" />
 	</AppRailTile>
 	<svelte:fragment slot="trail">

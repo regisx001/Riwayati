@@ -1,5 +1,6 @@
 import { fail, redirect } from "@sveltejs/kit";
 import type { Actions, PageServerLoad } from "./$types";
+import { loginSchema } from "$lib/Utils/schemas";
 
 export const load: PageServerLoad = async () => {
     return {
@@ -11,17 +12,14 @@ export const actions: Actions = {
     login: async ({ request, locals }) => {
         const body = Object.fromEntries(await request.formData())
 
-        if (!body?.email) {
+        const form = loginSchema.safeParse(body)
+
+        if (form.success === false) {
             return fail(400, {
-                email: "required"
+                form: form.error.flatten().fieldErrors
             })
         }
 
-        if (!body?.password) {
-            return fail(400, {
-                password: "required"
-            })
-        }
         try {
             // @ts-ignore
             await locals.pb.collection('users').authWithPassword(body.email, body.password);

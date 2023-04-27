@@ -1,11 +1,36 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
+	import { enhance, type SubmitFunction } from '$app/forms';
+	import { toastStore, type ToastSettings } from '@skeletonlabs/skeleton';
 	import { images } from '$lib/Utils/utils';
 	$: image = images[1];
 	let showPassword = false;
 	function showPass() {
 		showPassword = !showPassword;
 	}
+
+	function triggerToast(message: string, background = 'variant-filled-secondary') {
+		const t: ToastSettings = {
+			message,
+			background
+		};
+		toastStore.trigger(t);
+	}
+	const enhancement: SubmitFunction = async ({ data }) => {
+		return async ({ update, result }) => {
+			// @ts-ignore
+			const data = result?.data;
+			if (data?.form?.email) {
+				triggerToast(data?.form?.email.pop());
+			}
+			if (data?.form?.password) {
+				triggerToast(data?.form?.password.pop());
+			}
+			if (data?.credentials) {
+				triggerToast('Email Or Password not correct', 'variant-filled-primary');
+			}
+			await update();
+		};
+	};
 </script>
 
 <section
@@ -17,10 +42,10 @@
 	</div>
 	<div class="max-w-xl w-full card card-hover  shadow-2xl md:w-4/6">
 		<h2 class="text-center font-bold p-10">Login To Your Account</h2>
-		<form class="flex-col p-8 flex gap-3" method="post" action="?/login" use:enhance>
+		<form class="flex-col p-8 flex gap-3" method="post" action="?/login" use:enhance={enhancement}>
 			<input
 				placeholder="Eg: example@gmail.com"
-				type="email"
+				type="text"
 				class="input rounded-md my-2"
 				name="email"
 			/>
@@ -46,7 +71,7 @@
 				<a href="/forgot">forgot password ?</a>
 			</div>
 
-			<button class="btn my-1 variant-glass-secondary w-full rounded-lg">Register</button>
+			<button class="btn my-1 variant-glass-secondary w-full rounded-lg">Login</button>
 
 			<div class="w-full flex justify-center">
 				<a href="/forgot">Don't have An Acount !</a>
