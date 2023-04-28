@@ -4,7 +4,7 @@
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../../app.postcss';
 	// Imports
-	import { AppShell, Toast } from '@skeletonlabs/skeleton';
+	import { AppShell } from '@skeletonlabs/skeleton';
 	import AppRail from '$lib/Components/AppRail.svelte';
 	import NavBar from '$lib/Components/NavBar.svelte';
 </script>
@@ -20,5 +20,3 @@
 	<slot />
 	<!-- ---- / ---- -->
 </AppShell>
-
-<Toast />

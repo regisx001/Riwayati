@@ -36,6 +36,7 @@ export const actions: Actions = {
         } catch (err) {
             console.log('Error: ', err);
         }
-        throw redirect(300, "/login")
+
+        return { success: true }
     }
 };

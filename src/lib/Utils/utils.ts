@@ -1,3 +1,5 @@
+import { toastStore, type ToastSettings } from '@skeletonlabs/skeleton';
+
 export const defaultUrl = "http://127.0.0.1:8090"
 
 export function serializeNonPOJO(obj: any) {
@@ -29,4 +31,13 @@ export function getCoverUrl(user: any) {
         return false
     }
     return `${defaultUrl}/api/files/${user.collectionId}/${user.id}/${user.cover}`
+}
+
+
+export function triggerToast(message: string, background = 'variant-filled-secondary') {
+    const t: ToastSettings = {
+        message,
+        background
+    };
+    toastStore.trigger(t);
 }

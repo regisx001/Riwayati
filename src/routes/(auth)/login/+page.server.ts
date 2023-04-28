@@ -35,6 +35,9 @@ export const actions: Actions = {
                 credentials: "credentials"
             })
         }
-        throw redirect(300, '/')
+
+        return { success: true }
+
+        // throw redirect(300, '/')
     }
 };

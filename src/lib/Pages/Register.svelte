@@ -1,20 +1,14 @@
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms';
 	import { toastStore, type ToastSettings } from '@skeletonlabs/skeleton';
-	import { images } from '$lib/Utils/utils';
+	import { images, triggerToast } from '$lib/Utils/utils';
+	import { goto } from '$app/navigation';
 	$: image = images[0];
 	let showPassword = false;
 	function showPass() {
 		showPassword = !showPassword;
 	}
 	// Enhancement
-	function triggerToast(message: string, background = 'variant-filled-secondary') {
-		const t: ToastSettings = {
-			message,
-			background
-		};
-		toastStore.trigger(t);
-	}
 	const enhancement: SubmitFunction = async ({ data }) => {
 		return async ({ update, result }) => {
 			// @ts-ignore
@@ -30,6 +24,13 @@
 			}
 			if (data?.passwordConfirm) {
 				triggerToast(data?.passwordConfirm, 'variant-filled-primary');
+			}
+			if (data?.success) {
+				triggerToast(
+					'Succesfully Registered , Validate Your email at first !',
+					'variant-filled-warning'
+				);
+				await goto('/login');
 			}
 			await update();
 		};

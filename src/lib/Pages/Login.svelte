@@ -1,20 +1,13 @@
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms';
-	import { toastStore, type ToastSettings } from '@skeletonlabs/skeleton';
-	import { images } from '$lib/Utils/utils';
+	import { goto } from '$app/navigation';
+	import { images, triggerToast } from '$lib/Utils/utils';
 	$: image = images[1];
 	let showPassword = false;
 	function showPass() {
 		showPassword = !showPassword;
 	}
 
-	function triggerToast(message: string, background = 'variant-filled-secondary') {
-		const t: ToastSettings = {
-			message,
-			background
-		};
-		toastStore.trigger(t);
-	}
 	const enhancement: SubmitFunction = async ({ data }) => {
 		return async ({ update, result }) => {
 			// @ts-ignore
@@ -28,6 +21,11 @@
 			if (data?.credentials) {
 				triggerToast('Email Or Password not correct', 'variant-filled-primary');
 			}
+			if (data?.success) {
+				triggerToast('Succesfully Logged In', 'variant-filled-success');
+				await goto('/');
+			}
+
 			await update();
 		};
 	};

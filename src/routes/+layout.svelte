@@ -4,4 +4,4 @@
 
 <slot />
 
-<Toast position={'tr'} />
+<Toast position={'b'} width={'w-96'} />

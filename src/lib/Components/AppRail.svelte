@@ -6,7 +6,7 @@
 </script>
 
 <AppRail selected={Selectedpage}>
-	<AppRailTile
+	<!-- <AppRailTile
 		class={'/dashboard' === pathname ? '!bg-primary-500' : ''}
 		tag="a"
 		href={'/dashboard'}
@@ -14,7 +14,7 @@
 		value={0}
 	>
 		<i class="ti ti-dashboard text-3xl" />
-	</AppRailTile>
+	</AppRailTile> -->
 
 	<AppRailTile
 		class={'/dashboard/profile' === pathname ? '!bg-primary-500' : ''}
