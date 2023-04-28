@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms';
-	import { toastStore, type ToastSettings } from '@skeletonlabs/skeleton';
 	import { images, triggerToast } from '$lib/Utils/utils';
 	import { goto } from '$app/navigation';
 	$: image = images[0];

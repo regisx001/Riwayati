@@ -3,15 +3,9 @@
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../../app.postcss';
 	// Imports
-	import { AppShell, Toast } from '@skeletonlabs/skeleton';
-	import NavBar from '$lib/Components/NavBar.svelte';
+	import { AppShell } from '@skeletonlabs/skeleton';
 </script>
 
 <AppShell>
-	<!-- <svelte:fragment slot="header">
-		<NavBar />
-	</svelte:fragment> -->
 	<slot />
 </AppShell>
-
-<!-- <Toast /> -->

@@ -49,8 +49,8 @@ devDependencies:
     specifier: ^4.0.0
     version: 4.0.0(eslint@8.28.0)(svelte@3.54.0)
   pocketbase:
-    specifier: ^0.14.2
-    version: 0.14.2
+    specifier: ^0.14.3
+    version: 0.14.3
   postcss:
     specifier: ^8.4.14
     version: 8.4.23
@@ -2200,8 +2200,8 @@ packages:
     hasBin: true
     dev: true
 
-  /pocketbase@0.14.2:
-    resolution: {integrity: sha512-fwHAVmHBF+lT8cbCyywpFM+yrgHJYdgDWLX4NdgZnFbt5BtB2me4SkgT/npUmM4IRCUxZJbXTTOiPKdcRUV3eg==}
+  /pocketbase@0.14.3:
+    resolution: {integrity: sha512-F7UsNFH/W6/Z25nB+x6RF3oW0AuhcYroR9z8cFi+RH9rTTL8YZczly8PDjo8H9sZUrXXNmRtRpISGfSzrYl8dg==}
     dev: true
 
   /postcss-import@14.1.0(postcss@8.4.23):
