@@ -1,4 +1,5 @@
 <script lang="ts">
+	import RichTextEditor from '$lib/Widgets/RichTextEditor.svelte';
 </script>
 
-<section class="flex w-full h-full justify-center items-center">My Novels</section>
+<RichTextEditor />

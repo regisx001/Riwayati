@@ -13,7 +13,7 @@
 		label="Dashboard"
 		value={0}
 	>
-		<i class="ti ti-user-circle text-3xl" />
+		<i class="ti ti-dashboard text-3xl" />
 	</AppRailTile>
 
 	<AppRailTile
@@ -36,12 +36,18 @@
 		<i class="ti ti-book-2 text-3xl" />
 	</AppRailTile>
 
-	<!-- <AppRailTile label="Draft" value={3}>
-		<i class="ti ti-git-pull-request-draft text-3xl" />
+	<AppRailTile
+		class={'/dashboard/my-novel' === pathname ? '!bg-primary-500' : ''}
+		tag="a"
+		href={'/dashboard/my-novel'}
+		label="My Novels"
+		value={4}
+	>
+		<i class="ti ti-book text-3xl" />
 	</AppRailTile>
 
-	<AppRailTile label="My Novels" value={4}>
-		<i class="ti ti-book text-3xl" />
+	<!-- <AppRailTile  label="Draft" value={3}>
+		<i class="ti ti-git-pull-request-draft text-3xl" />
 	</AppRailTile> -->
 
 	<svelte:fragment slot="trail">

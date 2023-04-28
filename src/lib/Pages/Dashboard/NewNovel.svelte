@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Stepper, Step, InputChip } from '@skeletonlabs/skeleton';
+	import { InputChip } from '@skeletonlabs/skeleton';
 	let tags: any = ['novel'];
 </script>
 
