@@ -19,7 +19,6 @@ export const actions: Actions = {
             formData.delete("image")
         }
 
-        // const data = Object.fromEntries(formData)
         if (!formData.get("title")) {
             return fail(400, {
                 title: "Please Enter a title it's required !"
@@ -28,7 +27,7 @@ export const actions: Actions = {
 
         formData.append("creator", locals.user.id)
         try {
-            // await locals.pb.collection("novels").create(formData)
+            await locals.pb.collection("novels").create(formData)
         } catch (error) {
             console.log("ERROR : " + error)
         }

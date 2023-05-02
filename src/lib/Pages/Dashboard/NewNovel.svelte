@@ -59,7 +59,7 @@
 					<textarea
 						class="input"
 						placeholder="Add a short description ..."
-						name="descript"
+						name="description"
 						id=""
 						cols="30"
 						rows="5"
