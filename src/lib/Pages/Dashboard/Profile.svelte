@@ -2,7 +2,10 @@
 	import { getAvatarUrl, getCoverUrl } from '$lib/Utils/utils';
 	import { Avatar } from '@skeletonlabs/skeleton';
 	import { enhance } from '$app/forms';
+	import { fly } from 'svelte/transition';
 	export let user: any;
+	// animate
+	let animateAvatar = false;
 	// Cover Image Things
 	$: isCoverHovered = false;
 	let cover = getCoverUrl(user) || '/default_cover.jpg';
@@ -73,30 +76,42 @@
 
 				<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 				<div
-					class="relative"
-					on:mouseover={() => {
-						isAvatarHovered = true;
+					on:mouseenter={() => {
+						animateAvatar = true;
 					}}
-					on:mouseout={() => {
-						isAvatarHovered = false;
+					on:mouseleave={() => {
+						animateAvatar = false;
 					}}
 				>
-					<div>
-						<Avatar src={avatar} initials="zz" width="w-40" />
-					</div>
-					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<div
-						on:click={() => {
-							avatarInput.click();
+						class="relative"
+						on:mouseover={() => {
+							isAvatarHovered = true;
 						}}
-						class="absolute
-                        {isAvatarHovered ? 'flex' : 'hidden'}
-                        cursor-pointer w-full
-                        bottom-0 right-0 backdrop-brightness-75 
-                        justify-center items-center h-20 
-                        rounded-b-full"
+						on:mouseout={() => {
+							isAvatarHovered = false;
+						}}
 					>
-						<i class="btn ti ti-camera text-3xl" />
+						<div>
+							<Avatar src={avatar} initials="zz" width="w-40" />
+						</div>
+						<!-- svelte-ignore a11y-click-events-have-key-events -->
+						{#key animateAvatar}
+							<div
+								in:fly={{ duration: 600, delay: 50 }}
+								on:click={() => {
+									avatarInput.click();
+								}}
+								class="absolute
+					{isAvatarHovered ? 'flex' : 'hidden'}
+					cursor-pointer w-full
+					bottom-0 right-0 backdrop-brightness-75 
+					justify-center items-center h-20 
+					rounded-b-full"
+							>
+								<i class="btn ti ti-camera text-3xl" />
+							</div>
+						{/key}
 					</div>
 				</div>
 			</header>

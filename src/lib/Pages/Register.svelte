@@ -98,7 +98,7 @@
 			<button class="btn my-1 variant-glass-secondary w-full rounded-lg">Register</button>
 
 			<div class="w-full flex justify-center">
-				<a href="/forgot">Already have An Acount !</a>
+				<a href="/login">Already have An Acount !</a>
 			</div>
 		</form>
 	</div>

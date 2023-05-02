@@ -72,7 +72,7 @@
 			<button class="btn my-1 variant-glass-secondary w-full rounded-lg">Login</button>
 
 			<div class="w-full flex justify-center">
-				<a href="/forgot">Don't have An Acount !</a>
+				<a href="/register">Don't have An Acount !</a>
 			</div>
 		</form>
 	</div>
