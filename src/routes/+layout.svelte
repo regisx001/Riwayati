@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { Toast } from '@skeletonlabs/skeleton';
+	import { Toast, storePopup } from '@skeletonlabs/skeleton';
+	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
+	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 </script>
 
 <slot />

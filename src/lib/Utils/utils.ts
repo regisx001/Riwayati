@@ -33,6 +33,9 @@ export function getCoverUrl(user: any) {
     return `${defaultUrl}/api/files/${user.collectionId}/${user.id}/${user.cover}`
 }
 
+export function getFileUrl(collectionId: string, recordId: string, filename: string) {
+    return `${defaultUrl}/api/files/${collectionId}/${recordId}/${filename}`
+}
 
 export function triggerToast(message: string, background = 'variant-filled-secondary') {
     const t: ToastSettings = {
@@ -41,3 +44,4 @@ export function triggerToast(message: string, background = 'variant-filled-secon
     };
     toastStore.trigger(t);
 }
+

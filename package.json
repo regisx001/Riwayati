@@ -46,6 +46,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@ckeditor/ckeditor5-build-classic": "^37.1.0"
+		"@ckeditor/ckeditor5-build-classic": "^37.1.0",
+		"@floating-ui/dom": "^1.2.7"
 	}
 }

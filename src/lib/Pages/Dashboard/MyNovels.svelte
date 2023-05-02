@@ -1,6 +1,8 @@
 <script lang="ts">
+	import NovelTable from '$lib/Components/NovelsTable.svelte';
 	import { TabGroup, Tab } from '@skeletonlabs/skeleton';
 	let tabSet: number = 0;
+	export let novels: any;
 </script>
 
 <section class="h-full w-full">
@@ -25,7 +27,9 @@
 		</Tab>
 		<svelte:fragment slot="panel">
 			{#if tabSet === 0}
-				(tab panel 1 contents)
+				<div class="px-10">
+					<NovelTable {novels} />
+				</div>
 			{:else if tabSet === 1}
 				(tab panel 2 contents)
 			{:else if tabSet === 2}
